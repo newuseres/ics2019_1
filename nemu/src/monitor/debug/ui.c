@@ -116,10 +116,16 @@ void ui_mainloop(int is_batch_mode) {
   }
 }
 static int cmd_info(char *args) {
-  if (strcmp(args[0], "r") == 0) {
-    isa_reg_display();
-  } else  if (strcmp(args[0], "w") == 0) {
-    //TODO 
+  char *arg = strtok(args," ");
+  if(NULL==arg) {
+    printf("Please enter \"r\" or \"w\" r for register w for monitor point " ); return 0;
+  } else {
+    if(strcmp(arg,"w")==0) {
+      //LJH TODO
+      return;
+    } else if(strcmp(arg,"r")==0) {
+      isa_reg_display();
+    }
   }
 
 }

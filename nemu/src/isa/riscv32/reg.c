@@ -8,7 +8,7 @@ const char *regsl[] = {
 };
 
 void isa_reg_display() {
-
+  printf("REGISTER INFO:\n");
   for(int i=0;i<32;i++) {
     printf("%s %d\n",regsl[i],cpu.gpr[i]._32);
   }
