@@ -35,11 +35,9 @@ static int cmd_c(char *args) {
 static int cmd_q(char *args) {
   return -1;
 }
-static int cmd_info(char *args) {
-  return 0;
-}
 
 static int cmd_help(char *args);
+static int cmd_info(char *args);
 
 static struct {
   char *name;
@@ -116,4 +114,12 @@ void ui_mainloop(int is_batch_mode) {
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
   }
+}
+static int cmd_info(char *args) {
+  if (strcmp(args[0], "r") == 0) {
+    isa_reg_display();
+  } else  if (strcmp(args[0], "w") == 0) {
+    //TODO 
+  }
+
 }
