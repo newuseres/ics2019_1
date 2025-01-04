@@ -35,7 +35,7 @@ static int cmd_c(char *args) {
     printf("fuck");
     printf("%s",arg);
     if(isdigit(arg)) {
-      int step = atoi(arg);
+      // int step = atoi(arg);
       // if(step>0) {
       //   cpu_exec(step);
       // }
