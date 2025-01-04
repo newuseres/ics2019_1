@@ -141,6 +141,7 @@ static int cmd_info(char *args) {
 static int cmd_x(char *args) {
   int num,index;
   printf("y");
+  return 0;
   if(2!=sscanf(args,"%d 0x%-10x",&num,&index) ) {
     printf("wrong arug");
     return 0;
