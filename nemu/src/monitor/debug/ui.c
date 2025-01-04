@@ -29,17 +29,11 @@ static char* rl_gets() {
 
 static int cmd_c(char *args) {
   char *arg = strtok(NULL," ");
-  if(arg == NULL) {
-    cpu_exec(1);
+  int step;
+  if(sscanf("%d",&step)) {
+    cpu_exec(step); 
   } else {
-    printf("fuck");
-    printf("%s",arg);
-    if(isdigit(arg)) {
-      // int step = atoi(arg);
-      // if(step>0) {
-      //   cpu_exec(step);
-      // }
-    }
+    cpu_exec(1);
   }
   return 0;
 }
