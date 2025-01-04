@@ -28,13 +28,16 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
-  int step=-1;
-  sscanf(args,"%d",&step);
-  printf("%d",step);
-  if(step==-1) {
+  char *arg = strtok(args," ");
+  if(arg == NULL) {
     cpu_exec(1);
   } else {
-    cpu_exec(step);
+    if(isdigit(arg)) {
+      int step = atoi(arg);
+      if(step>0) {
+        cpu_exec(step);
+      }
+    }
   }
   return 0;
 }
