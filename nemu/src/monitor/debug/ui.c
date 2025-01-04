@@ -32,14 +32,14 @@ static int cmd_c(char *args) {
   if(arg == NULL) {
     cpu_exec(1);
   } else {
-    printf("fuck\n");
-     printf("%s",arg);
-    // if(isdigit(arg)) {
-    //   int step = atoi(arg);
-    //   if(step>0) {
-    //     cpu_exec(step);
-    //   }
-    // }
+    printf("fuck");
+    printf("%s",arg);
+    if(isdigit(arg)) {
+      int step = atoi(arg);
+      // if(step>0) {
+      //   cpu_exec(step);
+      // }
+    }
   }
   return 0;
 }
