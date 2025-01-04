@@ -28,7 +28,7 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
-  char *arg = strtok(args," ");
+  char *arg = strtok(NULL," ");
   if(arg == NULL) {
     cpu_exec(1);
   } else {
