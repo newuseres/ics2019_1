@@ -28,7 +28,13 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
-  cpu_exec(-1);
+  int step=-1;
+  sscanf(args,"%d",&step);
+  if(step==-1) {
+    cpu_exec(1);
+  } else {
+    cpu_exec(step);
+  }
   return 0;
 }
 
