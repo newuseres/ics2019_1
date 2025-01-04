@@ -140,8 +140,10 @@ static int cmd_info(char *args) {
 }
 static int cmd_x(char *args) {
   int num,index;
-  printf("%d",sscanf(args,"%d 0x%x",&num,&index));
-  return 0;
+  if(2 != sscanf(args,"%d 0x%x",&num,&index)) {
+    printf("wrong\n");
+    return 0;
+  }
   if(num<=0) {
     printf("wrong\n");
     return 0;
