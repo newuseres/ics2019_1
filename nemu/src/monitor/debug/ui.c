@@ -33,13 +33,13 @@ static int cmd_c(char *args) {
     cpu_exec(1);
   } else {
     printf("fuck");
-    printf("%s",arg);
-    if(isdigit(arg)) {
-      int step = atoi(arg);
-      if(step>0) {
-        cpu_exec(step);
-      }
-    }
+    // printf("%s",arg);
+    // if(isdigit(arg)) {
+    //   int step = atoi(arg);
+    //   if(step>0) {
+    //     cpu_exec(step);
+    //   }
+    // }
   }
   return 0;
 }
@@ -130,7 +130,7 @@ void ui_mainloop(int is_batch_mode) {
 static int cmd_info(char *args) {
   char *arg = strtok(args," ");
   if(NULL==arg) {
-    printf("Please enter \"r\" or \"w\" r for register w for monitor point " ); return 0;
+    printf("Please enter \"r\" or \"w\" r for register w for monitor point \n" ); return 0;
   } else {
     if(strcmp(arg,"w")==0) {
       //LJH TODO
