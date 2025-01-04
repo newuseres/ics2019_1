@@ -44,6 +44,7 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 static int cmd_info(char *args);
+static int cmd_x(char *args);
 
 static struct {
   char *name;
@@ -53,8 +54,8 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "info","Output information about somthing",cmd_info}
-
+  { "info","Output information about somthing",cmd_info},
+  { "x","Scan memory and output them",cmd_x }
   /* TODO: Add more commands */
 
 };
@@ -131,7 +132,23 @@ static int cmd_info(char *args) {
       return 0;
     } else if(strcmp(arg,"r")==0) {
       isa_reg_display();
+    } else {
+      printf("wrong\n");
     }
   }
   return 0;
+}
+static int cmd_x(char *args) {
+  int num,index;
+  sccanf(args,"%d 0x%-10x",&num,&index);
+  if(num<=0) {
+    printf("wrong\n");
+    return 0;
+  }
+  for(int i=0;i<num;i++) {
+    printf("0x%-10x:",index + i*4);    
+    printf("0x%-10x",isa_vaddr_read(index+i*4,4));
+    printf("\n");
+  }
+  printf("\n");
 }
