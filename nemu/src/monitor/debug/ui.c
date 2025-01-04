@@ -30,6 +30,7 @@ static char* rl_gets() {
 static int cmd_c(char *args) {
   int step=-1;
   sscanf(args,"%d",&step);
+  printf("%d",step);
   if(step==-1) {
     cpu_exec(1);
   } else {
