@@ -180,9 +180,8 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
-  watchpoint_display();
   Log("why %s",args);
-  Log("%d",wp->NO);
+  Log("NO %d",wp->NO);
   Log("%d %d",wp->value,value);
   Log("no way");
   wp->value = value;
