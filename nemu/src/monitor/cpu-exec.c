@@ -69,13 +69,10 @@ void cpu_exec(uint64_t n) {
     int res, flag = 0;
     for(WP *wp = WP_head; wp!=NULL; wp=wp->next) {
       uint32_t new_value = expr(wp->expr, &success);
-      Log("wtf");
       if(new_value != wp->value) {
-        Log("helo");
         flag = 1;
-        printf("Watchpoint %s change from %d to %d",wp->value,new_value);
+        printf("Watchpoint %s change from %d to %d",wp->expr,wp->value,new_value);
         wp->value = new_value;
-        Log("w");
       }
     }
     if(flag == 1) {
