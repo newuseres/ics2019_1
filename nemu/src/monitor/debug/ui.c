@@ -161,7 +161,7 @@ static int cmd_x(char *args) {
 static int cmd_p(char *args) {
   bool flag;
   int ans = expr(args,&flag);
-  if(ans) {
+  if(flag==false) {
     printf("wrong expression\n");
   } else {
     printf("0x%-10x %d\n",ans,ans);
