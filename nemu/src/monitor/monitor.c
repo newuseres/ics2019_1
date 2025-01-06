@@ -128,8 +128,10 @@ void TEST_expr() {
     bool success;
     int my_result = expr(test_expr,&success);
     if(my_result == ans && success) {
+      printf("good\n");
       continue;
     } else {
+      printf("bad my:%d ans:%d\n",my_result,ans);
       ALL_success = false;
     }
   }
