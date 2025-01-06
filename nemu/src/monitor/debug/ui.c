@@ -182,7 +182,8 @@ static int cmd_w(char *args) {
   WP *wp = new_wp();
   watchpoint_display();
   Log("why %s",args);
-  printf("%d %d",wp->value,value);
+
+  Log("%d %d",wp->value,value);
   Log("no way");
   wp->value = value;
   Log("wyo");
