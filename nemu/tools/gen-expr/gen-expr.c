@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define MAXOP 16
+#define MAXOP 24
 static char buf[65536];
 int m_index;
 int op_num;

@@ -267,7 +267,6 @@ uint32_t calc(int i, int j, bool *success){
         printf("divide 0\n");
         assert(0);
       }
-      printf("%d %d\n",left_val,right_val);
       return left_val / right_val;
     case TK_EQ: return (left_val == right_val);
     case TK_NEQ: return (left_val != right_val);
