@@ -64,20 +64,20 @@ void cpu_exec(uint64_t n) {
   log_clearbuf();
 
     /* TODO: check watchpoints here. */
-    // bool success;
-    // int res, flag = 0;
-    // for(WP *wp = head; wp!=NULL; wp=wp->next) {
-    //   uint32_t new_value = expr(wp->expr, &success);
-    //   if(new_value != wp->value) {
-    //     flag = 1;
-    //     printf("Watchpoint %s change from %d to %d",wp->value,new_value);
-    //     wp->value = new_value;
-    //   }
-    // }
-    // if(flag == 1) {
-    //   printf("Watchpoint changed!\n");
-    //   nemu_state.state = NEMU_STOP;
-    // }
+    bool success;
+    int res, flag = 0;
+    for(WP *wp = head; wp!=NULL; wp=wp->next) {
+      uint32_t new_value = expr(wp->expr, &success);
+      if(new_value != wp->value) {
+        flag = 1;
+        printf("Watchpoint %s change from %d to %d",wp->value,new_value);
+        wp->value = new_value;
+      }
+    }
+    if(flag == 1) {
+      printf("Watchpoint changed!\n");
+      nemu_state.state = NEMU_STOP;
+    }
 #endif
 
   g_nr_guest_instr ++;
