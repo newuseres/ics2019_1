@@ -38,7 +38,6 @@ void free_wp(WP *wp) {
   bool flag = false;
   if(head==wp) {
     head = wp->next;
-    flag = true;
   } else {
     for(WP *p = head; p->next!=NULL;p=p->next) {
       if(p->next == wp) {
