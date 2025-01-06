@@ -66,6 +66,7 @@ void cpu_exec(uint64_t n) {
     /* TODO: check watchpoints here. */
     bool success;
     int res, flag = 0;
+    printf("yo");
     for(WP *wp = head; wp!=NULL; wp=wp->next) {
       uint32_t new_value = expr(wp->expr, &success);
       if(new_value != wp->value) {
