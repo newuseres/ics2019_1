@@ -147,6 +147,7 @@ static bool make_token(char *e) {
 
         break;
       }
+      Log("yo");
     }
 
     if (i == NR_REGEX) {
