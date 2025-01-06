@@ -204,7 +204,7 @@ int calc(int i, int j, bool *success){
       break;
       case TK_NUM:
         sscanf(tokens[i].str,"%d",&ans);
-        printf("%d\n",ans);
+        printf("ans %d\n",ans);
       break;
       case TK_HEX:
         sscanf(tokens[i].str+2,"%x",&ans);
