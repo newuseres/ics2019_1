@@ -4,7 +4,6 @@
 #include "monitor/expr.h"
 
 
-extern WP *WP_head;
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
  * This is useful when you use the `si' command.
