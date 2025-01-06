@@ -2,7 +2,6 @@
 #define __WATCHPOINT_H__
 
 #include "common.h"
-
 typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
@@ -13,5 +12,6 @@ typedef struct watchpoint {
 
 } WP;
 
+static WP *head;
 
 #endif
