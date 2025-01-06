@@ -183,6 +183,7 @@ int priority_op(int type) {
   return -1;
 }
 int calc(int i, int j, bool *success){
+  printf("calc");
   if(i > j){
     *success = false;
     return 0;
