@@ -40,9 +40,9 @@ static struct rule {
   {"&&",TK_AND},
   {"\\(",'('},
   {"\\)",')'},
-  {"0[xX][0-9a-fA-F]{1,}",TK_HEX},
+  {"0x[0-9a-fA-F]+",TK_HEX},
   {"[0-9]+",TK_NUM},
-  {"\\$[0-9a-z]+",TK_REG}
+  {"\\$[\\$0-9a-zA-Z]+",TK_REG}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
