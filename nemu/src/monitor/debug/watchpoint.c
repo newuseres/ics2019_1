@@ -31,7 +31,7 @@ WP * new_wp() {
   tmp->next = head;
   head = tmp;
   tmp->value = 0;
-  Log("%d",tmp->NO);
+  Log("XYH %d",tmp->NO);
   return tmp;
 }
 void free_wp(WP *wp) {
