@@ -20,4 +20,41 @@ void init_wp_pool() {
 
 /* TODO: Implement the functionality of watchpoint */
 
-
+WP * new_wp() { 
+  if(NULL==free_) {
+    printf("wp_free is null\n");
+    assert(0); 
+  }
+  WP *tmp = free_;
+  free_ = free_->next;
+  tmp->next = head;
+  head = tmp;
+  return tmp;
+}
+void free_wp(WP *wp) {
+  if(wp==NULL) {
+    return;
+  }
+  bool flag = false;
+  if(head==wp) {
+    head = wp->next;
+    flag = true;
+  } else {
+    for(WP *p = head; p->next!=NULL;p=p->next) {
+      if(p->next == wp) {
+        p->next = p->next->next;
+        flag = true;
+        break;
+      }
+    }
+    if(flag) {
+      wp->next = free_;
+      free_ = wp;
+    }
+  }
+}
+void watchpoint_display() {
+  for(WP* wp = head;wp!=NULL;wp=wp->next) {
+    printf("WatchPoint NO:%d EXP:%s  Result:%d",wp->expr,wp->value);
+  }
+}

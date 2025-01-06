@@ -46,6 +46,8 @@ static int cmd_help(char *args);
 static int cmd_info(char *args);
 static int cmd_x(char *args);
 static int cmd_p(char *args);
+static int cmd_w(char *args);
+static int cmd_d(char *args);
 
 static struct {
   char *name;
@@ -58,6 +60,8 @@ static struct {
   { "info","Output information about somthing",cmd_info},
   { "x","Scan memory and output them",cmd_x },
   { "p","Calculate expression",cmd_p }
+  { "w","add watchpoint",cmd_w},
+  { "d","delete watchpoint",cmd_d}
   /* TODO: Add more commands */
 
 };
@@ -130,7 +134,7 @@ static int cmd_info(char *args) {
     printf("Please enter \"r\" or \"w\" r for register w for monitor point \n" ); return 0;
   } else {
     if(strcmp(arg,"w")==0) {
-      //LJH TODO
+      watchpoint_display();
       return 0;
     } else if(strcmp(arg,"r")==0) {
       isa_reg_display();
