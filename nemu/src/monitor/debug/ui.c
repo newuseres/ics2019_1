@@ -179,7 +179,7 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
-  Log("lend %d",strlen(args));
+  printf("why %s",args);
   strcpy(wp->expr,args);
   
   wp->value = value;
