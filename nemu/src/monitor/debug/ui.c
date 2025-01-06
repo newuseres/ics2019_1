@@ -164,7 +164,7 @@ static int cmd_p(char *args) {
   if(ans) {
     printf("wrong expression\n");
   } else {
-    printf("0x%10x %d\n",ans,ans);
+    printf("0x%-10x %d\n",ans,ans);
   }
   return 0;
 }
