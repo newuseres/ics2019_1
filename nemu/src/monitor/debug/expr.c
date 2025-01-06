@@ -258,7 +258,7 @@ int calc(int i, int j, bool *success){
   if(!success) {
     return 0;
   }
-  int right_val = calc(pri_op+1+1,j,success);
+  int right_val = calc(pri_op+1,j,success);
   if(!success) {
     return 0;
   }
