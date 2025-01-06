@@ -230,7 +230,7 @@ int calc(int i, int j, bool *success){
       brack_num = brack_num - 1;
     } else if(brack_num == 0) {
       int op = priority_op(tokens[k].type);
-      if( now_pri >= op  ) {
+      if( op!=-1 && now_pri >= op  ) {
         now_pri = op;
         pri_op = k;
       }
@@ -240,7 +240,7 @@ int calc(int i, int j, bool *success){
       *success = false;
       return 0;
   }
-  printf("op %d %d\n",pri_op,now_pri);
+//  printf("op %d %d\n",pri_op,now_pri);
   if(6 == now_pri) { //addr
       int addr = calc(i+1,j,success);
       if(! (*success) ) {
