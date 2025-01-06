@@ -174,6 +174,7 @@ static int cmd_p(char *args) {
 static int cmd_w(char *args) {
   bool success;
   uint32_t value = expr(args,&success);
+  Log("info");
   if(!success) {
     printf("bad expr for watchpoint\n");
     return 0;
