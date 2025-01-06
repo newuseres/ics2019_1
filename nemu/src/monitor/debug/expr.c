@@ -240,7 +240,6 @@ int calc(int i, int j, bool *success){
       *success = false;
       return 0;
   }
-  printf("op %d %d\n",pri_op,now_pri);
   if(6 == now_pri) { //addr
       int addr = calc(i+1,j,success);
       if(! (*success) ) {
