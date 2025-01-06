@@ -60,7 +60,7 @@ static struct {
   { "info","Output information about somthing",cmd_info},
   { "x","Scan memory and output them",cmd_x },
   { "p","Calculate expression",cmd_p }
-  { "w","add watchpoint",cmd_w},
+  ,{ "w","add watchpoint",cmd_w},
   { "d","delete watchpoint",cmd_d}
   /* TODO: Add more commands */
 
@@ -171,4 +171,27 @@ static int cmd_p(char *args) {
     printf("0x%-10x %d\n",ans,ans);
   }
   return 0;
+}
+static int cmd_w(char *args) {
+  bool success;
+  uint32_t value = expr(args,&success);
+  if(!success) {
+    printf("bad expr for watchpoint\n");
+    return 0;
+  }
+  WP *wp = new_wp();
+  strcpy(wp->expr,args);
+  wp->value = value;
+  watchpoint_display();
+  return 0;
+}
+static int cmd_d(char *args){
+  int num;
+  if(args == NULL || sscanf(args,"%d",&num) != 1 ) {
+    printf("Wrong input for delete watchpoint\n");
+    return 0;
+  }
+  free_wp(NO_wp(num));
+  return 0;
+  
 }

@@ -11,6 +11,8 @@ void init_wp_pool() {
   for (i = 0; i < NR_WP; i ++) {
     wp_pool[i].NO = i;
     wp_pool[i].next = &wp_pool[i + 1];
+    wp_pool[i].value = 0;
+    memset(wp_pool[i].expr,0,sizeof(wp_pool));
   }
   wp_pool[NR_WP - 1].next = NULL;
 
@@ -55,6 +57,14 @@ void free_wp(WP *wp) {
 }
 void watchpoint_display() {
   for(WP* wp = head;wp!=NULL;wp=wp->next) {
-    printf("WatchPoint NO:%d EXP:%s  Result:%d",wp->expr,wp->value);
+    printf("WatchPoint NO:%d EXP:%s  Result:%d\n",wp->expr,wp->value);
   }
+}
+WP* NO_wp(int num) {
+  for(WP* wp = head;wp!=NULL;wp=wp->next) {
+    if(wp->NO == num) {
+      return wp;
+    }
+  }
+  return NULL;
 }
