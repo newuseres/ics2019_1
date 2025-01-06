@@ -6,7 +6,7 @@
 #include <string.h>
 
 // this should be enough
-#define MAXOP 64
+#define MAXOP 10
 static char buf[65536];
 int m_index;
 int op_num;
