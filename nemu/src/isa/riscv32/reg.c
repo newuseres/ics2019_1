@@ -9,6 +9,7 @@ const char *regsl[] = {
 
 void isa_reg_display() {
   printf("REGISTER INFO:\n");
+  printf("%-4s 0x%-10x %d\n","pc",cpu.pc,cpu.pc);
   for(int i=0;i<32;i++) {
     rtlreg_t reg = reg_l(i);
     printf("%-4s 0x%-10x %d\n",reg_name(i,4),reg,reg);
