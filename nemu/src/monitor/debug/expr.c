@@ -153,9 +153,10 @@ static bool make_token(char *e) {
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
-    return calc(0,nr_token-1,success);
+    printf("false expr");
+    return 0;
   }
-  
+   return calc(0,nr_token-1,success);
 }
   /* TODO: Insert codes to evaluate the expre */
 bool check_parentheses(int i,int j);
