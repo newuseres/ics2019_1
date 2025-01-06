@@ -179,8 +179,10 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
+  printf("%d",wp);
   assert(wp!=NULL);
   Log("why %s",args);
+
   wp->value = value;
   Log("wyo");
   strcpy(wp->expr,args);
