@@ -281,6 +281,7 @@ int calc(int i, int j, bool *success){
 }
 bool check_parentheses(int i,int j) {
   if( ! (tokens[i].type == '(' && tokens[j].type == ')') ) {
+    printf("wrong parentheses");
     return false;
   }
   int num = 0;
