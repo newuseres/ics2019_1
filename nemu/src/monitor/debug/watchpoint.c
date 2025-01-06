@@ -30,7 +30,7 @@ WP * new_wp() {
   free_ = free_->next;
   tmp->next = head;
   head = tmp;
-  tmp->value = 0;
+  tmp->value = 2;
   Log("XYH %d %d",tmp->NO,free_);
   return tmp;
 }
