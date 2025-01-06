@@ -181,7 +181,8 @@ static int cmd_w(char *args) {
   }
   WP *wp = new_wp();
   Log("why %s",args);
-//  assert(wp->value);
+  assert(wp);
+  assert(wp->value);
   Log("wyo");
   strcpy(wp->expr,args);
   
