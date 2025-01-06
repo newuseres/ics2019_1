@@ -4,7 +4,7 @@
 #include "monitor/expr.h"
 
 
-extern WP *head;
+extern WP *WP_head;
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
  * This is useful when you use the `si' command.
@@ -67,10 +67,11 @@ void cpu_exec(uint64_t n) {
     Log("start");
     bool success;
     int res, flag = 0;
-    for(WP *wp = head; wp!=NULL; wp=wp->next) {
+    for(WP *wp = WP_head; wp!=NULL; wp=wp->next) {
       uint32_t new_value = expr(wp->expr, &success);
       Log("wtf");
       if(new_value != wp->value) {
+        Log("helo");
         flag = 1;
         printf("Watchpoint %s change from %d to %d",wp->value,new_value);
         wp->value = new_value;
