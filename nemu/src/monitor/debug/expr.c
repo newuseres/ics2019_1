@@ -179,9 +179,9 @@ int priority_op(int type) {
   case '-':
     return 1;
   default:
-  return -1;
+  return 7;
   }
-  return -1;
+  return 7;
 }
 int calc(int i, int j, bool *success){
   if(i > j){
@@ -230,7 +230,7 @@ int calc(int i, int j, bool *success){
       brack_num = brack_num - 1;
     } else if(brack_num == 0) {
       int op = priority_op(tokens[k].type);
-      if( op!=-1 && now_pri >= op  ) {
+      if( now_pri >= op  ) {
         now_pri = op;
         pri_op = k;
       }
