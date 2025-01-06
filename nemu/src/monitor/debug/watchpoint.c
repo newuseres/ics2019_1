@@ -4,7 +4,6 @@
 #define NR_WP 32
 
 static WP wp_pool[NR_WP] = {};
-WP *WP_head;
 static WP *free_ = NULL;
 
 void init_wp_pool() {
