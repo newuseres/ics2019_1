@@ -275,7 +275,7 @@ int calc(int i, int j, bool *success){
     case TK_NEQ: return (left_val != right_val);
     case TK_AND: return (left_val && right_val);
     default:
-      printf("wrong");
+      printf("wrong\n");
       assert(0);
   }
 }
