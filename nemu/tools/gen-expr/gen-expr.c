@@ -14,7 +14,7 @@ static inline int choose(unsigned int i) {
   return rand()%i;
 }
 static inline void gen_num() {
-  int num = choose(65536);
+  int num = choose(65536)+1;
   sprintf(buf+m_index,"%d",num);
 }
 static inline void gen(char c) {

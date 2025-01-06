@@ -268,7 +268,7 @@ int calc(int i, int j, bool *success){
     case '/':
       if(right_val == 0) {
         printf("divide 0\n");
-//        assert(0);
+        assert(0);
       }
       return left_val / right_val;
     case TK_EQ: return (left_val == right_val);
