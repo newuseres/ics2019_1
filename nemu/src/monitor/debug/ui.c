@@ -60,8 +60,8 @@ static struct {
   { "info","Output information about somthing",cmd_info},
   { "x","Scan memory and output them",cmd_x },
   { "p","Calculate expression",cmd_p }
-  ,{ "w","add watchpoint",cmd_w},
-  { "d","delete watchpoint",cmd_d}
+  // ,{ "w","add watchpoint",cmd_w},
+  // { "d","delete watchpoint",cmd_d}
   /* TODO: Add more commands */
 
 };
