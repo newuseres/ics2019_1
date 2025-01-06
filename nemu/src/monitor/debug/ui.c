@@ -45,6 +45,7 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 static int cmd_info(char *args);
 static int cmd_x(char *args);
+static int cmd_p(char *args);
 
 static struct {
   char *name;
@@ -55,7 +56,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "info","Output information about somthing",cmd_info},
-  { "x","Scan memory and output them",cmd_x }
+  { "x","Scan memory and output them",cmd_x },
+  { "p","Calculate expression",cmd_p }
   /* TODO: Add more commands */
 
 };
@@ -154,4 +156,15 @@ static int cmd_x(char *args) {
     printf("\n");
   }
   printf("\n");
+}
+
+static int cmd_p(char *args) {
+  bool flag;
+  int ans = expr(args,&flag);
+  if(ans) {
+    printf("wrong expression\n");
+  } else {
+    printf("0x%10x %d\n",ans,ans);
+  }
+  return 0;
 }

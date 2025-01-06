@@ -7,7 +7,15 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ
+  TK_NOTYPE = 256,
+  TK_EQ,
+  TK_NEQ,
+  TK_NUM,
+  TK_HEX,
+  TK_REG,
+  TK_AND,
+  TK_PTR
+
 
   /* TODO: Add more token types */
 
@@ -24,7 +32,17 @@ static struct rule {
 
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
-  {"==", TK_EQ}         // equal
+  {"\\-",'-'},//subduction \-
+  {"\\*",'*'},//multiple
+  {"/",'/'},//divide
+  {"==", TK_EQ},         // equal
+  {"!=",TK_NEQ},
+  {"&&",TK_AND},
+  {"\\(",'('},
+  {"\\)",')'},
+  {"0[xX][0-9a-fA-F]{1,}",TK_HEX},
+  {"[0-9]+",TK_NUM},
+  {"\\$[0-9a-z]+",TK_REG}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -80,7 +98,24 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-          default: TODO();
+          case '*':
+            if(nr_token == 0 || tokens[nr_token-1].type !=')' &&tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_HEX ) {
+              tokens[nr_token].type = TK_PTR;
+            }
+          case TK_REG:
+          case TK_NUM:
+          case TK_HEX:
+            if(substr_len>=32) {
+              printf("num too long!");
+              return false;
+            }
+            strncpy(tokens[nr_token].str,substr_start,substr_len);
+            tokens[nr_token].str[substr_len] = 0;
+          default: 
+            tokens[nr_token].type = rules[i].token_type;
+            nr_token++;
+          case TK_NOTYPE:
+            break;
         }
 
         break;
@@ -103,7 +138,8 @@ uint32_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
+  success = true;
+
 
   return 0;
 }
