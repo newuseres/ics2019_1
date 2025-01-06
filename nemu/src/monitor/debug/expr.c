@@ -87,7 +87,7 @@ static bool make_token(char *e) {
         Log("%d woc\n",i);
 
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
-              Log("%d woc\n",i);
+              Log("%d woc woc\n",i);
 
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
