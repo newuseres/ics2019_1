@@ -76,7 +76,9 @@ void cpu_exec(uint64_t n) {
     }
     if(flag == 1) {
       printf("Watchpoint changed!\n");
-      nemu_state.state = NEMU_STOP;
+      if(nemu_state.state==NEMU_RUNNING) {
+        nemu_state.state = NEMU_STOP;
+      }
     }
 #endif
 
