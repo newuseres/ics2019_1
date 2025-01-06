@@ -179,8 +179,9 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
+  Log("lend %d",strlen(args));
   strcpy(wp->expr,args);
-  Log("info");
+  
   wp->value = value;
   watchpoint_display();
   return 0;
