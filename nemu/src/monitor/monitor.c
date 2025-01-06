@@ -8,6 +8,7 @@ void init_regex();
 void init_wp_pool();
 void init_device();
 void init_difftest(char *ref_so_file, long img_size);
+int expr(char *,bool*);
 
 static char *mainargs = "";
 static char *log_file = NULL;
@@ -111,4 +112,30 @@ int init_monitor(int argc, char *argv[]) {
   welcome();
 
   return is_batch_mode;
+}
+
+
+char test_expr[65536];
+void TEST_expr() {
+  FILE *fp = fopen("./tools/gen-expr/input","r");;
+  if(!fp) {
+    printf("No input File\n");
+    return;
+  }
+  int ans;
+  bool ALL_success = true;;
+  while(EOF != fscanf(fp,"%d %s",&ans,test_expr)) {
+    bool success;
+    int my_result = expr(test_expr,&success);
+    if(my_result == ans && success) {
+      continue;
+    } else {
+      ALL_success = false;
+    }
+  }
+  if(ALL_success) {
+    printf("GOOD ANS for EXPR\n");
+  } else {
+    printf("BAD ANS for EXPR\n");
+  }
 }

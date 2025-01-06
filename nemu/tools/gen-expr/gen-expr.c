@@ -8,34 +8,34 @@
 // this should be enough
 #define MAXOP 64
 static char buf[65536];
-int index;
+int m_index;
 int op_num;
 static inline int choose(unsigned int i) {
   return rand()%i;
 }
 static inline void gen_num() {
   int num = choose(65536);
-  sprintf(buf+index,"%d",num);
+  sprintf(buf+m_index,"%d",num);
 }
 static inline void gen(char c) {
-  sprintf(buf+index,"%c",c);  
+  sprintf(buf+m_index,"%c",c);  
 }
 static inline void gen_rand_op(){
   switch(choose(4)){
     case 0:
-      buf[index] = '+';
+      buf[m_index] = '+';
       break;
     case 1:
-      buf[index] = '-';
+      buf[m_index] = '-';
       break;
     case 2:
-      buf[index] = '*';
+      buf[m_index] = '*';
       break;
     case 3:
-      buf[index] = '/';
+      buf[m_index] = '/';
       break;
   }
-  index++;
+  m_index++;
 }
 
 static inline void gen_rand_expr() {
@@ -46,18 +46,19 @@ static inline void gen_rand_expr() {
   switch (choice) {
     case 0: 
       gen_num();
-      while(buf[index]) {
-        index = index + 1;
+      while(buf[m_index]) {
+        m_index = m_index + 1;
       }
       op_num = op_num + 1;
       break;
     case 1: 
       op_num += 2;
-      buf[index] = '(';
-      index++;
+      buf[m_index] = '(';
+      m_index++;
       gen_rand_expr();
-      buf[index] = ')';
-      index++;
+      buf[m_index] = ')';
+      m_index++;
+      buf[m_index] = 0;
       break;
     default:
       op_num += 2;
@@ -69,7 +70,7 @@ static inline void gen_rand_expr() {
 
 }
 
-static char code_buf[65536];
+static char code_buf[65536*2];
 static char *code_format =
 "#include <stdio.h>\n"
 "int main() { "
@@ -87,6 +88,8 @@ int main(int argc, char *argv[]) {
   }
   int i;
   for (i = 0; i < loop; i ++) {
+    m_index = 0;
+    op_num = 0;
     gen_rand_expr();
 
     sprintf(code_buf, code_format, buf);
@@ -103,7 +106,10 @@ int main(int argc, char *argv[]) {
     assert(fp != NULL);
 
     int result;
-    fscanf(fp, "%d", &result);
+    int warn = fscanf(fp, "%d", &result);
+    if(!warn) {;
+    }
+
     pclose(fp);
 
     printf("%u %s\n", result, buf);
