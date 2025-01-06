@@ -299,7 +299,6 @@ bool check_parentheses(int i,int j) {
 }
 
 uint32_t expr(char *e, bool *success) {
-  printf("why");
   if (!make_token(e)) {
     *success = false;
     printf("false expr");

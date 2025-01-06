@@ -162,8 +162,6 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_p(char *args) {
-  printf("wow");
-
   bool flag;
   int ans = expr(args,&flag);
   if(flag==false) {
