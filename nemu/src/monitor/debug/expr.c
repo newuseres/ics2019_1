@@ -197,7 +197,7 @@ uint32_t calc(int i, int j, bool *success){
         ans = isa_reg_str2val(tokens[i].str+1,success);
       break;
       case TK_NUM:
-        sscanf(tokens[i].str,"%d",&ans);
+        sscanf(tokens[i].str,"%u",&ans);
       break;
       case TK_HEX:
         sscanf(tokens[i].str+2,"%x",&ans);
@@ -300,5 +300,5 @@ uint32_t expr(char *e, bool *success) {
     printf("false expr");
     return 0;
   }
-   return calc(0,nr_token-1,success);
+  return calc(0,nr_token-1,success);
 }
