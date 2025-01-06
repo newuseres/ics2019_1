@@ -85,6 +85,7 @@ static bool make_token(char *e) {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
         Log("%d woc\n",i);
+              Log("%d woc w woc\n",i);
 
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
               Log("%d woc woc\n",i);
