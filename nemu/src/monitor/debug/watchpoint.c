@@ -54,6 +54,7 @@ void free_wp(WP *wp) {
 }
 void watchpoint_display() {
   for(WP* wp = head;wp!=NULL;wp=wp->next) {
+    wp->value = 1;
     printf("WatchPoint NO:%d EXP:%s  Result:%d\n",wp->NO,wp->expr,wp->value);
   }
 }
