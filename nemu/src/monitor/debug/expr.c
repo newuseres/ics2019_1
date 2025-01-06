@@ -84,11 +84,8 @@ static bool make_token(char *e) {
   while (e[position] != '\0') {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
-        Log("%d woc\n",i);
         regexec(&re[i], e + position, 1, &pmatch, 0);
-              Log("%d woc w woc\n",i);
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
-              Log("%d woc woc\n",i);
 
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
@@ -148,7 +145,6 @@ static bool make_token(char *e) {
 
         break;
       }
-      Log("yo");
     }
 
     if (i == NR_REGEX) {
