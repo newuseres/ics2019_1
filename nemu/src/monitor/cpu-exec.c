@@ -64,6 +64,7 @@ void cpu_exec(uint64_t n) {
   log_clearbuf();
 
     /* TODO: check watchpoints here. */
+    Log("start");
     bool success;
     int res, flag = 0;
     for(WP *wp = head; wp!=NULL; wp=wp->next) {
@@ -78,6 +79,7 @@ void cpu_exec(uint64_t n) {
       printf("Watchpoint changed!\n");
       nemu_state.state = NEMU_STOP;
     }
+    Log("End");
 #endif
 
   g_nr_guest_instr ++;
