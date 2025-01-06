@@ -188,6 +188,7 @@ int calc(int i, int j, bool *success){
     return 0;
   }
   if(i == j){
+    printf("fuck");
     /* Single token.
      * For now this token should be a number.
      * Return the value of the number.
