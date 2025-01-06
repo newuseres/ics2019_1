@@ -12,6 +12,5 @@ typedef struct watchpoint {
 
 } WP;
 
-static WP *head;
 
 #endif
