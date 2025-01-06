@@ -289,7 +289,7 @@ bool check_parentheses(int i,int j) {
     if(tokens[i].type == '(') {
       num = num + 1;
     }
-    if(tokens[j].type == ')' ) {
+    if(tokens[i].type == ')' ) {
       num = num - 1;
     }
     if(num < 0 ) {
