@@ -160,6 +160,7 @@ static int cmd_x(char *args) {
     printf("\n");
   }
   printf("\n");
+  return 0;
 }
 
 static int cmd_p(char *args) {

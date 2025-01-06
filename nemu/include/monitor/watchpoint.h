@@ -11,6 +11,10 @@ typedef struct watchpoint {
   uint32_t value;
 
 } WP;
-
+WP * new_wp();
+void free_wp(WP *wp);
+void watchpoint_display();
+WP* NO_wp(int num);
+void init_wp_pool();
 
 #endif
