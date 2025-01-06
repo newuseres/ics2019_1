@@ -12,7 +12,7 @@ void init_wp_pool() {
     wp_pool[i].NO = i;
     wp_pool[i].next = &wp_pool[i + 1];
     wp_pool[i].value = 0;
-    memset(wp_pool[i].expr,0,sizeof(wp_pool[i]));
+    memset(wp_pool[i].expr,0,sizeof(wp_pool[i].expr));
   }
   wp_pool[NR_WP - 1].next = NULL;
 
