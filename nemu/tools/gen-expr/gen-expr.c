@@ -6,9 +6,67 @@
 #include <string.h>
 
 // this should be enough
+#define MAXOP 64
 static char buf[65536];
+int index;
+int op_num;
+static inline int choose(unsigned int i) {
+  return rand()%i;
+}
+static inline void gen_num() {
+  int num = choose(65536);
+  sprintf(buf+index,"%d",num);
+}
+static inline void gen(char c) {
+  sprintf(buf+index,"%c",c);  
+}
+static inline void gen_rand_op(){
+  switch(choose(4)){
+    case 0:
+      buf[index] = '+';
+      break;
+    case 1:
+      buf[index] = '-';
+      break;
+    case 2:
+      buf[index] = '*';
+      break;
+    case 3:
+      buf[index] = '/';
+      break;
+  }
+  index++;
+}
+
 static inline void gen_rand_expr() {
-  buf[0] = '\0';
+  int choice = choose(3);
+  if(MAXOP - op_num <= 2) {
+    choice = 0;
+  }
+  switch (choice) {
+    case 0: 
+      gen_num();
+      while(buf[index]) {
+        index = index + 1;
+      }
+      op_num = op_num + 1;
+      break;
+    case 1: 
+      op_num += 2;
+      buf[index] = '(';
+      index++;
+      gen_rand_expr();
+      buf[index] = ')';
+      index++;
+      break;
+    default:
+      op_num += 2;
+      gen_rand_expr();
+      gen_rand_op();
+      gen_rand_expr();
+      break;
+  }
+
 }
 
 static char code_buf[65536];
