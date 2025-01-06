@@ -179,10 +179,12 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
-  Log("why %s",args);
+
+//  Log("why %s",args);
+  wp->value = value;
+
   strcpy(wp->expr,args);
   
-  wp->value = value;
   watchpoint_display();
   return 0;
 }
