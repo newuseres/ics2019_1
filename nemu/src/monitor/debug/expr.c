@@ -150,14 +150,7 @@ static bool make_token(char *e) {
   return true;
 }
 
-uint32_t expr(char *e, bool *success) {
-  if (!make_token(e)) {
-    *success = false;
-    printf("false expr");
-    return 0;
-  }
-   return calc(0,nr_token-1,success);
-}
+
   /* TODO: Insert codes to evaluate the expre */
 bool check_parentheses(int i,int j);
 int priority_op(int type) {
@@ -183,7 +176,7 @@ int priority_op(int type) {
   }
   return 7;
 }
-int calc(int i, int j, bool *success){
+uint32_t calc(int i, int j, bool *success){
   if(i > j){
     *success = false;
     return 0;
@@ -198,7 +191,7 @@ int calc(int i, int j, bool *success){
       return 0;
     }
     *success = true;
-    int ans;
+    uint32_t ans;
     switch(tokens[i].type) {
       case TK_REG:
         ans = isa_reg_str2val(tokens[i].str+1,success);
@@ -241,23 +234,23 @@ int calc(int i, int j, bool *success){
       return 0;
   }
   if(6 == now_pri) { //addr
-      int addr = calc(i+1,j,success);
+      uint32_t addr = calc(i+1,j,success);
       if(! (*success) ) {
         return 0;
       }
       return paddr_read(addr,4);
   } else if(5  == now_pri) {
-      int num = calc(i+1,j,success);
+      uint32_t num = calc(i+1,j,success);
       if(!(*success)) {
         return 0;
       }
       return -num;
   }
-  int left_val = calc(i,pri_op-1,success);
+  uint32_t left_val = calc(i,pri_op-1,success);
   if(!success) {
     return 0;
   }
-  int right_val = calc(pri_op+1,j,success);
+  uint32_t right_val = calc(pri_op+1,j,success);
   if(!success) {
     return 0;
   }
@@ -299,4 +292,13 @@ bool check_parentheses(int i,int j) {
     return false;
   }
   return true;
+}
+
+uint32_t expr(char *e, bool *success) {
+  if (!make_token(e)) {
+    *success = false;
+    printf("false expr");
+    return 0;
+  }
+   return calc(0,nr_token-1,success);
 }
