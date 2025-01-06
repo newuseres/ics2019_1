@@ -184,13 +184,11 @@ int priority_op(int type) {
   return -1;
 }
 int calc(int i, int j, bool *success){
-  printf("calc");
   if(i > j){
     *success = false;
     return 0;
   }
   if(i == j){
-    printf("fuck");
     /* Single token.
      * For now this token should be a number.
      * Return the value of the number.
@@ -207,7 +205,6 @@ int calc(int i, int j, bool *success){
       break;
       case TK_NUM:
         sscanf(tokens[i].str,"%d",&ans);
-        printf("ans %d\n",ans);
       break;
       case TK_HEX:
         sscanf(tokens[i].str+2,"%x",&ans);
