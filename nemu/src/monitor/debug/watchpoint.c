@@ -3,6 +3,7 @@
 
 static WP wp_pool[NR_WP] = {};
 static WP *free_ = NULL;
+WP *WP_head;
 
 void init_wp_pool() {
   int i;
