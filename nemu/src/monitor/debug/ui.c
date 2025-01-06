@@ -179,12 +179,10 @@ static int cmd_w(char *args) {
     printf("bad expr for watchpoint\n");
     return 0;
   }
-  WP *wp = new_wp();
+  WP *tmp = new_wp();
   Log("why %s",args);
-  assert(wp);
-  assert(wp->value);
   Log("wyo");
-  strcpy(wp->expr,args);
+  strcpy(tmp->expr,args);
   
   watchpoint_display();
   return 0;
