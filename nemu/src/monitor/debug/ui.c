@@ -9,6 +9,7 @@
 
 void cpu_exec(uint64_t);
 
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -179,7 +180,7 @@ static int cmd_w(char *args) {
     return 0;
   }
   WP *wp = new_wp();
-  printf("%d",wp);
+  watchpoint_display();
   assert(wp!=NULL);
   Log("why %s",args);
 
