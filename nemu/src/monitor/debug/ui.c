@@ -182,6 +182,7 @@ static int cmd_w(char *args) {
 
   Log("why %s",args);
   wp->value = value;
+  Log("wyo");
   strcpy(wp->expr,args);
   
   watchpoint_display();
