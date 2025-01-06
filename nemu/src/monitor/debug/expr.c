@@ -293,9 +293,13 @@ bool check_parentheses(int i,int j) {
       num = num - 1;
     }
     if(num < 0 ) {
+        printf("wrong parentheses");
       return false;
     }
   }
-  if(num) return false;
+  if(num) {
+      printf("wrong parentheses");
+    return false;
+  }
   return true;
 }
