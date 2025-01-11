@@ -13,6 +13,6 @@ make_EHelper(auipc) {
 }
 
 make_EHelper(addi) {
-      rtl_addi(&id_dest->val, &id_src->val, &id_src2->val);
+      rtl_addi(&id_dest->val, &id_src->val, &id_src2->imm);
       print_asm_template3(addi);
 }

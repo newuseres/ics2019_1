@@ -1,10 +1,10 @@
 #include "cpu/exec.h"
 
 make_EHelper(jal){
-  rtl_addi(&reg_l(id_dest->reg), pc , 4);
-  printf("PC PC PC,0x%x",id_src->imm);
-  print_asm_template2(jal);
-  rtl_j(id_src->imm+*pc);
+    rtl_sr(id_dest->reg,&decinfo.seq_pc,4);
+    rtl_j(id_src->imm + decinfo.seq_pc);
+
+    print_asm_template2(jal);
 }
 
 make_EHelper(jalr){
