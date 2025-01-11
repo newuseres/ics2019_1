@@ -5,8 +5,8 @@ make_EHelper(jal){
     s1 = 4;
     rtl_sr(id_dest->reg, &s0, 4);
     rtl_sub(&s0, &s0, &s1);
-    rtl_add(&s0, &s0, &id_src->val);
-    rtl_j(&s0);
+    rtl_add(&(decinfo.jmp_pc), &s0, &id_src->val);
+    decinfo_set_jmp(true);
     print_asm_template3(jal);
 }
 
