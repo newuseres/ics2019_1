@@ -183,6 +183,7 @@ int priority_op(int type) {
   return 7;
 }
 uint32_t calc(int i, int j, bool *success){
+  Log("START CALC");
   if(i > j){
     *success = false;
     return 0;
