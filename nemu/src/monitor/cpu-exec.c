@@ -51,7 +51,6 @@ void cpu_exec(uint64_t n) {
 #if defined(DIFF_TEST)
   difftest_step(ori_pc, cpu.pc);
 #endif
-                      Log("MAP READ VV FAIL");
 
 #ifdef DEBUG
   if (g_nr_guest_instr < LOG_MAX) {
