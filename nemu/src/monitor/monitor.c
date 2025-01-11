@@ -82,6 +82,8 @@ static inline void parse_args(int argc, char *argv[]) {
 }
 
 int init_monitor(int argc, char *argv[]) {
+    Log("isbatch%d",is_batch_mode);
+
   /* Perform some global initialization. */
   /* Parse arguments. */
   parse_args(argc, argv);
