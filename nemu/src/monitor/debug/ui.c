@@ -91,7 +91,7 @@ void ui_mainloop(int is_batch_mode) {
     cmd_c(NULL);
     return;
   }
-  printf("why");
+  Log("fuck");
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
 
@@ -118,7 +118,6 @@ void ui_mainloop(int is_batch_mode) {
         break;
       }
     }
-  printf("wh");
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
   }
