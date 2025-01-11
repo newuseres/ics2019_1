@@ -64,22 +64,22 @@ void cpu_exec(uint64_t n) {
   log_clearbuf();
 
     /* TODO: check watchpoints here. */
-    // bool success;
-    // int res, flag = 0;
-    // for(WP *wp = WP_head; wp!=NULL; wp=wp->next) {
-    //   uint32_t new_value = expr(wp->expr, &success);
-    //   if(new_value != wp->value) {
-    //     flag = 1;
-    //     printf("Watchpoint %s change from %d to %d",wp->expr,wp->value,new_value);
-    //     wp->value = new_value;
-    //   }
-    // }
-    // if(flag == 1) {
-    //   printf("Watchpoint changed!\n");
-    //   if(nemu_state.state==NEMU_RUNNING) { //避免程序已经abort了还跳出来干别的
-    //     nemu_state.state = NEMU_STOP;
-    //   }
-    // }
+    bool success;
+    int res, flag = 0;
+    for(WP *wp = WP_head; wp!=NULL; wp=wp->next) {
+      uint32_t new_value = expr(wp->expr, &success);
+      if(new_value != wp->value) {
+        flag = 1;
+        printf("Watchpoint %s change from %d to %d",wp->expr,wp->value,new_value);
+        wp->value = new_value;
+      }
+    }
+    if(flag == 1) {
+      printf("Watchpoint changed!\n");
+      if(nemu_state.state==NEMU_RUNNING) { //避免程序已经abort了还跳出来干别的
+        nemu_state.state = NEMU_STOP;
+      }
+    }
 #endif
 
   g_nr_guest_instr ++;
@@ -91,6 +91,7 @@ void cpu_exec(uint64_t n) {
 
     if (nemu_state.state != NEMU_RUNNING) break;
   }
+                      Log("MAP READ VV FAIL");
 
   switch (nemu_state.state) {
     case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
