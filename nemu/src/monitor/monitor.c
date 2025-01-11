@@ -87,6 +87,7 @@ int init_monitor(int argc, char *argv[]) {
   /* Perform some global initialization. */
   /* Parse arguments. */
   parse_args(argc, argv);
+    Log("isbatch%d",is_batch_mode);
 
   /* Open the log file. */
   init_log(log_file);
