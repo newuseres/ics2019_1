@@ -15,8 +15,8 @@ ifdef mainargs
 MAINARGS = -a $(mainargs)
 endif
 NEMU_ARGS = -b $(MAINARGS) -l $(shell dirname $(BINARY))/nemu-log.txt $(BINARY).bin
-
-image:
+NEMU_HOME = /home/acer/ics2019_1/nemu
+image: 
 	@echo + LD "->" $(BINARY_REL).elf
 	@$(LD) $(LDFLAGS) --gc-sections -T $(LD_SCRIPT) -e _start -o $(BINARY).elf $(LINK_FILES)
 	@$(OBJDUMP) -d $(BINARY).elf > $(BINARY).txt
