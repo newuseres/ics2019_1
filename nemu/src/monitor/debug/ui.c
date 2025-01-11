@@ -106,7 +106,6 @@ void ui_mainloop(int is_batch_mode) {
     if (args >= str_end) {
       args = NULL;
     }
-  printf("wh");
 
 #ifdef HAS_IOE
     extern void sdl_clear_event_queue(void);
@@ -119,6 +118,7 @@ void ui_mainloop(int is_batch_mode) {
         break;
       }
     }
+  printf("wh");
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
   }
