@@ -29,7 +29,11 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
+                      Log("MAP READ VV FAIL");
+
   cpu_exec(-1);
+                      Log("MAP READ xV FAIL");
+
   return 0;
 }
 
@@ -100,7 +104,6 @@ static int cmd_si(char *args){
 }
 
 void ui_mainloop(int is_batch_mode) {
-                    Log("MAP READ VV FAIL");
   if (is_batch_mode) {
     cmd_c(NULL);
     return;
