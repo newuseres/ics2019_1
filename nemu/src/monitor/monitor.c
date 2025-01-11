@@ -108,7 +108,7 @@ int init_monitor(int argc, char *argv[]) {
   init_difftest(diff_so_file, img_size);
  
   /* Display welcome message. */
-  Log("isbatch",is_batch_mode);
+  Log("isbatch%d",is_batch_mode);
   welcome();
   return is_batch_mode;
 }
