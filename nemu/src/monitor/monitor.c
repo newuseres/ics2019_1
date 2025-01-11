@@ -110,6 +110,7 @@ int init_monitor(int argc, char *argv[]) {
 
   /* Display welcome message. */
   welcome();
+  printf("no play");
   return is_batch_mode;
 }
 
