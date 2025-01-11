@@ -1,7 +1,6 @@
 #include "nemu.h"
 
 uint32_t isa_vaddr_read(vaddr_t addr, int len) {
-            Log("MAP READ V FAIL");
 
   return paddr_read(addr, len);
 }

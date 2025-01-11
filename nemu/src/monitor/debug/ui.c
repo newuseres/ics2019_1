@@ -162,6 +162,8 @@ static int cmd_x(char *args) {
   }
   for(int i=0;i<num;i++) {
     printf("0x%-10x:",index + i*4);    
+                Log("MAP READ V FAIL");
+
     printf("0x%-10x",isa_vaddr_read(index+i*4,4));
     printf("\n");
   }
