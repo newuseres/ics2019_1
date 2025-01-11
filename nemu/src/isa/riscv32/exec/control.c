@@ -1,10 +1,11 @@
 #include "cpu/exec.h"
 
 make_EHelper(jal){
+    s0 = decinfo.seq_pc;
+    s1 = 4;
     rtl_sr(id_dest->reg,&decinfo.seq_pc,4);
-    Log("PPC: 0x%x",id_src->imm + decinfo.seq_pc);
-    rtl_j(id_src->imm + decinfo.seq_pc);
-
+    rtl_sub(&s0,&s0,&s1);
+    rtl_j(&s0);
     print_asm_template2(jal);
 }
 
