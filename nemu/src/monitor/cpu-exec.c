@@ -42,6 +42,8 @@ void cpu_exec(uint64_t n) {
   }
 
   for (; n > 0; n --) {
+                          Log("MAP READ VH FAIL");
+
     __attribute__((unused)) vaddr_t ori_pc = cpu.pc;
 
     /* Execute one instruction, including instruction fetch,
@@ -62,7 +64,6 @@ void cpu_exec(uint64_t n) {
               "To capture more trace, you can modify the LOG_MAX macro in %s\n\n", __FILE__);
   }
   log_clearbuf();
-                      Log("MAP READ VH FAIL");
 
     /* TODO: check watchpoints here. */
     bool success;
