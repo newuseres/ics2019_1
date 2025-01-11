@@ -12,7 +12,7 @@ make_EHelper(auipc) {
   print_asm_template2(auipc);
 }
 
-make_EHelper(calu_i) {
+make_EHelper(calc_i) {
   switch (decinfo.isa.instr.funct3)
   {
       case 0:
