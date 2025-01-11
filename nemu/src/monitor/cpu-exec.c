@@ -42,7 +42,6 @@ void cpu_exec(uint64_t n) {
   }
 
   for (; n > 0; n --) {
-                          Log("MAP READ VH FAIL");
 
     __attribute__((unused)) vaddr_t ori_pc = cpu.pc;
 
@@ -83,8 +82,6 @@ void cpu_exec(uint64_t n) {
       }
     }
 #endif
-                      Log("MAP READ Vg FAIL");
-
   g_nr_guest_instr ++;
 
 #ifdef HAS_IOE
