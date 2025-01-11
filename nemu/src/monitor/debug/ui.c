@@ -43,6 +43,7 @@ static int cmd_x(char *args);
 static int cmd_p(char *args);
 static int cmd_w(char *args);
 static int cmd_d(char *args);
+static int cmd_si(char *args);
 
 static struct {
   char *name;
@@ -56,7 +57,8 @@ static struct {
   { "x","Scan memory and output them",cmd_x },
   { "p","Calculate expression",cmd_p }
   ,{ "w","add watchpoint",cmd_w},
-  { "d","delete watchpoint",cmd_d}
+  { "d","delete watchpoint",cmd_d},
+  {"si","one step go",cmd_si}
   /* TODO: Add more commands */
 
 };
@@ -83,6 +85,17 @@ static int cmd_help(char *args) {
     }
     printf("Unknown command '%s'\n", arg);
   }
+  return 0;
+}
+static int cmd_si(char *args){
+  int step = 1;
+  if(args != NULL && strcmp(args,"") != 0){
+    if (sscanf(args,"%d",&step) != 1){
+      printf("illegal format!\n");
+      return 0;
+    }
+  }
+  cpu_exec(step);
   return 0;
 }
 
