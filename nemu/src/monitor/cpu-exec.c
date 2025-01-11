@@ -81,6 +81,7 @@ void cpu_exec(uint64_t n) {
       }
     }
 #endif
+                      Log("MAP READ Vg FAIL");
 
   g_nr_guest_instr ++;
 
