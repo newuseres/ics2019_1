@@ -62,6 +62,7 @@ void cpu_exec(uint64_t n) {
               "To capture more trace, you can modify the LOG_MAX macro in %s\n\n", __FILE__);
   }
   log_clearbuf();
+                      Log("MAP READ VV FAIL");
 
     /* TODO: check watchpoints here. */
     bool success;
