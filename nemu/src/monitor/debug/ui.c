@@ -29,16 +29,7 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
-  if(args==NULL) {
-    return 0;
-  }
-  char *arg = strtok(NULL," ");
-  int step;
-  if(sscanf("%d",&step)) {
-    cpu_exec(step); 
-  } else {
-    cpu_exec(1);
-  }
+  cpu_exec(-1);
   return 0;
 }
 
