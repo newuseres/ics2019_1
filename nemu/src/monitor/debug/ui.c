@@ -106,6 +106,7 @@ void ui_mainloop(int is_batch_mode) {
     if (args >= str_end) {
       args = NULL;
     }
+  printf("wh");
 
 #ifdef HAS_IOE
     extern void sdl_clear_event_queue(void);
