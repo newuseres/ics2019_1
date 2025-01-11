@@ -91,7 +91,6 @@ void cpu_exec(uint64_t n) {
 
     if (nemu_state.state != NEMU_RUNNING) break;
   }
-                      Log("MAP READ VV FAIL");
 
   switch (nemu_state.state) {
     case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
