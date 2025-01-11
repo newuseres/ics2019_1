@@ -183,7 +183,6 @@ int priority_op(int type) {
   return 7;
 }
 uint32_t calc(int i, int j, bool *success){
-  Log("START CALC");
   if(i > j){
     *success = false;
     return 0;
@@ -245,6 +244,8 @@ uint32_t calc(int i, int j, bool *success){
       if(! (*success) ) {
         return 0;
       }
+                Log("START CALC");
+
       return paddr_read(addr,4);
   } else if(5  == now_pri) {
       uint32_t num = calc(i+1,j,success);

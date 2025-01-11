@@ -26,7 +26,6 @@ uint32_t paddr_read(paddr_t addr, int len) {
     return *(uint32_t *)(pmem + offset) & (~0u >> ((4 - len) << 3));
   }
   else {
-          Log("START CALC");
     return map_read(addr, len, fetch_mmio_map(addr));
   }
 }
