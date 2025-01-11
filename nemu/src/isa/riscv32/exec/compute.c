@@ -14,4 +14,5 @@ make_EHelper(auipc) {
 
 make_EHelper(addi) {
       rtl_addi(&id_dest->val, &id_src->val, decinfo.isa.instr.simm11_0);
+      print_asm_template3(addi);
 }
