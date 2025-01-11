@@ -106,11 +106,10 @@ int init_monitor(int argc, char *argv[]) {
 
   /* Initialize differential testing. */
   init_difftest(diff_so_file, img_size);
-  printf("wdasdasfasdadfshe");
-
+ 
   /* Display welcome message. */
+  printf("is batch_mode?%d",is_batch_mode);
   welcome();
-  printf("dasdassdasdf");
   return is_batch_mode;
 }
 
