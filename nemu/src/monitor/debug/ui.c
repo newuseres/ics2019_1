@@ -29,11 +29,7 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
-                      Log("MAP READ VV FAIL");
-
   cpu_exec(-1);
-                      Log("MAP READ xV FAIL");
-
   return 0;
 }
 
