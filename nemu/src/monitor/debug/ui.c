@@ -29,6 +29,9 @@ static char* rl_gets() {
 }
 
 static int cmd_c(char *args) {
+  if(args==NULL) {
+    return 0;
+  }
   char *arg = strtok(NULL," ");
   int step;
   if(sscanf("%d",&step)) {
