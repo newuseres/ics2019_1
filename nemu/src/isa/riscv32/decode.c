@@ -63,6 +63,6 @@ make_DHelper(J) {
   (decinfo.isa.instr.imm11_<<11) |
   (decinfo.isa.instr.imm19_12<<12)|
   (decinfo.isa.instr.imm10_1<<1);
-  decode_op_i(id_src,offset+*pc,true);
+  decode_op_i(id_src,offset,true);
   decode_op_r(id_dest,decinfo.isa.instr.rd,false);
 }
