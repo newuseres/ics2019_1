@@ -245,6 +245,7 @@ uint32_t calc(int i, int j, bool *success){
         return 0;
       }
       Log("START CALC,0x%x",addr);
+      Log("WHY");
       return paddr_read(addr,4);
   } else if(5  == now_pri) {
       uint32_t num = calc(i+1,j,success);
