@@ -100,6 +100,7 @@ static int cmd_si(char *args){
 }
 
 void ui_mainloop(int is_batch_mode) {
+  is_batch_mode = false;
   if (is_batch_mode) {
     cmd_c(NULL);
     return;
