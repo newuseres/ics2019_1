@@ -2,7 +2,7 @@
 
 make_EHelper(jal){
     rtl_addi(&reg_l(id_dest->reg),pc,4);
-    Log("PC",id_src->imm);
+    Log("PC 0x%x",id_src->imm);
     rtl_j(id_src->imm);
 
     print_asm_template2(jal);
