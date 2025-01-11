@@ -110,6 +110,7 @@ int init_monitor(int argc, char *argv[]) {
   /* Display welcome message. */
   printf("is batch_mode?%d",is_batch_mode);
   welcome();
+  Log("wh");
   return is_batch_mode;
 }
 
