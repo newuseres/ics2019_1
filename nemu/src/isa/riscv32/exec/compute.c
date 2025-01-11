@@ -11,8 +11,16 @@ make_EHelper(auipc) {
   rtl_sr(id_dest->reg, &id_dest->val, 4);
   print_asm_template2(auipc);
 }
-make_EHelper(addi) {
-  rtl_add(&id_dest->val,&id_src->val,&id_src2->val);
-  rtl_sr(id_dest->reg,&id_dest->val,4);
-  print_asm_template3(addi);
+
+make_EHelper(calu_i) {
+  switch (decinfo.isa.instr.funct3)
+  {
+      case 0:
+            rtl_addi(&id_dest->val, &id_src->val, decinfo.isa.instr.simm11_0);
+            print_asm_template2(addi);
+    default:
+      assert(0 && "UNDEFINED_CALC_U_CODE" );
+    break;
+  }
+    rtl_sr(id_dest->reg, &id_dest->val, 4);
 }

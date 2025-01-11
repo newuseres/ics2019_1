@@ -9,13 +9,6 @@ static make_EHelper(load) {
   decinfo.width = load_table[decinfo.isa.instr.funct3].width;
   idex(pc, &load_table[decinfo.isa.instr.funct3]);
 }
-static OpcodeEntry calc_i_table [8] = {
-  EX(addi),EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY
-};
-
-static make_EHelper(calc_i) {
-  idex(pc, &calc_i_table[decinfo.isa.instr.funct3]);  
-}
 
 static OpcodeEntry store_table [8] = {
   EMPTY, EMPTY, EXW(st, 4), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
