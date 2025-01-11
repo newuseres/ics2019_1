@@ -12,7 +12,7 @@ static make_EHelper(load) {
 static OpcodeEntry calc_i_table [8] = {
   EX(addi),EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY };
 
-make_EHelper(calc_i) {
+static make_EHelper(calc_i) {
   idex(pc, &calc_i_table[decinfo.isa.instr.funct3]);  
 }
 
