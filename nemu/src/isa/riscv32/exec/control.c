@@ -9,8 +9,7 @@ make_EHelper(jal) {
 }
 make_EHelper(jalr){
     rtl_sr(id_dest->reg,&decinfo.seq_pc,4);
-    rtl_add(&id_src->val,&id_src->val,&id_src2->val);
-    rtl_addi(&id_src->val,&id_src->val,~1);
-    rtl_j(id_src->val);
+    decinfo.jmp_pc = (id_src->val+id_src2->val)&~1;
+    rtl_j(decinfo.jmp_pc);
     print_asm_template3(jalr);
 }
