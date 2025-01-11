@@ -2,7 +2,7 @@
 
 make_EHelper(jal){
     rtl_sr(id_dest->reg,&decinfo.seq_pc,4);
-    rtl_j(id_src->val);
+    rtl_j(id_src->imm);
 
     print_asm_template2(jal);
 }
