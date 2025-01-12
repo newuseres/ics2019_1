@@ -8,7 +8,6 @@ make_EHelper(jal) {
     print_asm_template2(jal);
 }
 make_EHelper(jalr){
-    s0 = decinfo.seq_pc;
     rtl_sr(id_dest->reg,&decinfo.seq_pc,4);
     rtl_add(&id_src->val,&id_src->val,&id_src2->val);
     rtl_andi(&id_src->val,&id_src->val,(~1));
