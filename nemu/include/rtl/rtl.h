@@ -132,12 +132,14 @@ void interpret_rtl_exit(int state, vaddr_t halt_pc, uint32_t halt_ret);
 
 static inline void rtl_not(rtlreg_t *dest, const rtlreg_t* src1) {
   // dest <- ~src1
-  TODO();
+  *dest = ~(*src1);
+//  TODO();
 }
 
 static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
-  TODO();
+  *dest = (( (*src1) ) | (-(int32_t)(1<<((width)-1) & (*src1) )) );
+//  TODO();
 }
 
 static inline void rtl_setrelopi(uint32_t relop, rtlreg_t *dest,
