@@ -22,27 +22,27 @@ make_EHelper(branch_go){
     switch(decinfo.isa.instr.funct3){
         case 0x0:
             decinfo_set_jmp((id_src->val == id_src2->val));
-            print_asm_template2(beq);
+            print_asm_template3(beq);
             break;
         case 0x1:
             decinfo_set_jmp((id_src->val != id_src2->val));
-            print_asm_template2(bne);
+            print_asm_template3(bne);
             break;
         case 0x4:
             decinfo_set_jmp(((signed)id_src->val < (signed)id_src2->val));
-            print_asm_template2(blt);
+            print_asm_template3(blt);
             break;
         case 0x5:
             decinfo_set_jmp(((signed)id_src->val >= (signed)id_src2->val));
-            print_asm_template2(bge);
+            print_asm_template3(bge);
             break;
         case 0x6:
             decinfo_set_jmp(((unsigned)id_src->val < (unsigned)id_src2->val));
-            print_asm_template2(bltu);
+            print_asm_template3(bltu);
             break;
         case 0x7:
             decinfo_set_jmp(((unsigned)id_src->val >= (unsigned)id_src2->val));
-            print_asm_template2(bgeu);
+            print_asm_template3(bgeu);
             break;
         default:
             assert(0 && "wrong BRANCH code");
