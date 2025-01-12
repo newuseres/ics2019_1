@@ -44,6 +44,7 @@ static inline void idex(vaddr_t *pc, OpcodeEntry *e) {
 }
 
 static inline void update_pc(void) {
+  Log("update? %d",decinfo.is_jmp);
   if (decinfo.is_jmp) { decinfo.is_jmp = 0; }
   else { cpu.pc = decinfo.seq_pc; }
 }
