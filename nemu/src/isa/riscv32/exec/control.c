@@ -17,8 +17,8 @@ make_EHelper(jalr){
 }
 
 make_EHelper(branch_go){
-    rtl_add(decinfo.jmp_pc,&decinfo.seq_pc,&id_dest->val);
-    rtl_subi(decinfo.jmp_pc,&decinfo.jmp_pc,4);
+    rtl_add(&decinfo.jmp_pc,&decinfo.seq_pc,&id_dest->val);
+    rtl_subi(&decinfo.jmp_pc,&decinfo.jmp_pc,4);
     switch(decinfo.isa.instr.funct3){
         case 0x0:
             decinfo_set_jmp((id_src->val == id_src2->val));
