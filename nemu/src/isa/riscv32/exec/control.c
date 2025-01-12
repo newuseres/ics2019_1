@@ -13,6 +13,9 @@ make_EHelper(jalr){
     rtl_add(&id_src->val,&id_src->val,&id_src2->val);
     rtl_andi(&id_src->val,&id_src->val,(~1));
     rtl_j(id_src->val);
+
+    difftest_skip_dut(1,2);//跳过一个周期，跳过2个指令，用于diff test
+
     print_asm_template3(jalr);
 }
 
