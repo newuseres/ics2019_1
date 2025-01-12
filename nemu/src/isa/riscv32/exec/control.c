@@ -25,6 +25,7 @@ make_EHelper(branch_go){
             print_asm_template3(beq);
             break;
         case 0x1:
+            Log("JP? %d xx %x",(id_src->val == id_src2->val),decinfo.jmp_pc);
             decinfo_set_jmp((id_src->val != id_src2->val));
             print_asm_template3(bne);
             break;
