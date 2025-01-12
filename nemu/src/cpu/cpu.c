@@ -8,7 +8,6 @@ rtlreg_t s0, s1, t0, t1, ir;
 DecodeInfo decinfo;
 
 void decinfo_set_jmp(bool is_jmp) {
-  Log("%s",is_jmp);
   decinfo.is_jmp = is_jmp;
 }
 
