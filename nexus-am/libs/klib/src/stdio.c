@@ -164,7 +164,7 @@ void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list 
     stk_top = 0;
     if(num == 0) {
       stk_top = 1;
-      stk[0] = 0;
+      stk[0] = '0';
     }
     if(num<0) {
       out[*putlen++] = '-';
