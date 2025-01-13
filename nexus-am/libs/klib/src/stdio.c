@@ -94,7 +94,7 @@ int vsnprintf(char *out, size_t n,const char *fmt,va_list ap) {
         case '7':
         case '8':
         case '9': {
-          out_put_numer_for_align(&out,fmt,putlen,ap,' ');
+          out_put_numer_for_align(&out,fmt,&putlen,ap,' ');
           fmt++;
           break;
         }
