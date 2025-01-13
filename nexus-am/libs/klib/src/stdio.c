@@ -76,6 +76,7 @@ int vsnprintf(char *out, size_t n,const char *fmt,va_list ap) {
           break;
         }
       default:
+        // TO DO in printf
         //_putc(*fmt);
         //assert(0&&"TO DO IN PRINTF");
         break;
