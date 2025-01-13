@@ -100,7 +100,9 @@ static int cmd_si(char *args){
 }
 
 void ui_mainloop(int is_batch_mode) {
-//  is_batch_mode = false;
+#ifdef  MY_DEBUG
+  is_batch_mode = true;
+#endif
   if (is_batch_mode) {
     cmd_c(NULL);
     return;
