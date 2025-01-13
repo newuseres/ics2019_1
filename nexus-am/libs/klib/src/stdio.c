@@ -81,76 +81,7 @@ int vsnprintf(char *out, size_t n,const char *fmt,va_list ap) {
         }
         case '0':{
           fmt++;
-//          out_put_numer_for_align(out,fmt,&putlen,ap,'0');
-  int align_digit = 0;
-//  char stk[1024];
-//  int stk_top = 0;
-        char c = '0';
-  while(*fmt!='d'&&*fmt!='x'&&*fmt!='u') {
-    align_digit = align_digit * 10 + *fmt - '0';
-    fmt++;
-  }
-  if(*fmt == 'd' ) {
-    int32_t num = va_arg(ap,int32_t);
-    stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    if(num<0) {
-      out[putlen++] = '-';
-      num = -num;
-    }
-    while(num) {
-      stk[stk_top++] = num%10 + '0';
-      num = num / 10;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }
-  } else if(*fmt == 'u') {
-    uint32_t num = va_arg(ap,uint32_t);
-    stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    while(num) {
-      stk[stk_top++] = num%10 + '0';
-      num = num / 10;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }    
-  } else if(*fmt=='x') {
-      out[putlen++] = '0';
-      out[putlen++] = 'x';
-      uint32_t num = va_arg(ap,uint32_t);
-      stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    while(num) {
-      stk[stk_top++] = num_set[num%16];
-      num = num / 16;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }        
-  }
+          out_put_numer_for_align(out,fmt,&putlen,ap,'0');
           break;
         }
         case '1':
@@ -162,76 +93,7 @@ int vsnprintf(char *out, size_t n,const char *fmt,va_list ap) {
         case '7':
         case '8':
         case '9': {
-//          out_put_numer_for_align(out,fmt,&putlen,ap,'0');
-  int align_digit = 0;
-//  char stk[1024];
-//  int stk_top = 0;
-        char c = ' ';
-  while(*fmt!='d'&&*fmt!='x'&&*fmt!='u') {
-    align_digit = align_digit * 10 + *fmt - '0';
-    fmt++;
-  }
-  if(*fmt == 'd' ) {
-    int32_t num = va_arg(ap,int32_t);
-    stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    if(num<0) {
-      out[putlen++] = '-';
-      num = -num;
-    }
-    while(num) {
-      stk[stk_top++] = num%10 + '0';
-      num = num / 10;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }
-  } else if(*fmt == 'u') {
-    uint32_t num = va_arg(ap,uint32_t);
-    stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    while(num) {
-      stk[stk_top++] = num%10 + '0';
-      num = num / 10;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }    
-  } else if(*fmt=='x') {
-      out[putlen++] = '0';
-      out[putlen++] = 'x';
-      uint32_t num = va_arg(ap,uint32_t);
-      stk_top = 0;
-    if(num == 0) {
-      stk_top = 1;
-      stk[0] = '0';
-    }
-    while(num) {
-      stk[stk_top++] = num_set[num%16];
-      num = num / 16;
-    }
-    for(int i=stk_top;i<align_digit;i++) {
-      out[putlen++] = c;
-    }
-    while(stk_top) {
-      out[putlen++] = stk[stk_top-1];
-      stk_top -= 1;
-    }        
-  }
+          out_put_numer_for_align(out,fmt,&putlen,ap,' ');
           break;
         }
       default:
@@ -303,7 +165,7 @@ void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list 
       stk[0] = '0';
     }
     if(num<0) {
-      out[*putlen++] = '-';
+      out[(*putlen)++] = '-';
       num = -num;
     }
     while(num) {
@@ -311,10 +173,10 @@ void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list 
       num = num / 10;
     }
     for(int i=stk_top;i<align_digit;i++) {
-      out[*putlen++] = c;
+      out[(*putlen)++] = c;
     }
     while(stk_top) {
-      out[*putlen++] = stk[stk_top-1];
+      out[(*putlen)++] = stk[stk_top-1];
       stk_top -= 1;
     }
   } else if(*fmt == 'u') {
@@ -329,15 +191,15 @@ void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list 
       num = num / 10;
     }
     for(int i=stk_top;i<align_digit;i++) {
-      out[*putlen++] = c;
+      out[(*putlen)++] = c;
     }
     while(stk_top) {
-      out[*putlen++] = stk[stk_top-1];
+      out[(*putlen)++] = stk[stk_top-1];
       stk_top -= 1;
     }    
   } else if(*fmt=='x') {
-      out[*putlen++] = '0';
-      out[*putlen++] = 'x';
+      out[(*putlen)++] = '0';
+      out[(*putlen)++] = 'x';
       uint32_t num = va_arg(ap,uint32_t);
       stk_top = 0;
     if(num == 0) {
@@ -349,10 +211,10 @@ void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list 
       num = num / 16;
     }
     for(int i=stk_top;i<align_digit;i++) {
-      out[*putlen++] = c;
+      out[(*putlen)++] = c;
     }
     while(stk_top) {
-      out[*putlen++] = stk[stk_top-1];
+      out[(*putlen)++] = stk[stk_top-1];
       stk_top -= 1;
     }        
   }
