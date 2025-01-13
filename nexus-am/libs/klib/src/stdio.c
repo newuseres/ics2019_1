@@ -153,7 +153,7 @@ int snprintf(char *out, size_t n, const char *fmt, ...) {
   return len;
 }
 
-void out_put_numer_for_align(char *out, const char *fmt,int *putlen, va_list ap,char c) {
+void out_put_numer_for_align(char *out, const char *fmt,size_t *putlen, va_list ap,char c) {
   int align_digit = 0;
   char stk[1024];
   int stk_top = 0;
